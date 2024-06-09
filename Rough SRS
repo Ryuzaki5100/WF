@@ -1,0 +1,39 @@
+Software Requirements Specification (SRS) for Backend Architecture
+1. Introduction
+The backend system is designed to facilitate high-speed communication between the main server, client servers, and the frontend system. It includes data management, server communication, web socket integration, user data access, cache management, and algorithm execution for arbitrage trading.
+
+2. Functional Requirements
+2.1 Data Management
+Define data structures and databases for storing static real-time data and user information.
+Specify data flow between databases and backend services.
+2.2 Server Communication
+Describe how the main server simulates API requests from client servers.
+Detail the set of routes and responses handled by the main server.
+2.3 Web Socket Integration
+Specify the use of web sockets for fast communication between the main server and client servers.
+Define the protocols and mechanisms for establishing and maintaining web socket connections.
+2.4 User Data Access
+Outline how the backend accesses user data stored in a separate database.
+Define the security measures for handling user credentials and transaction history.
+2.5 Cache Management
+Detail the integration with a Redis cache for storing and retrieving the latest trade information.
+Specify how the main server interacts with the cache to fetch real-time data.
+2.6 Algorithm Execution
+Describe the algorithm (bot) that processes parameters from the Redis cache to make trading decisions.
+Define the criteria and logic used by the algorithm to perform arbitrage.
+3. Non-Functional Requirements
+3.1 Performance
+Specify response times, throughput, and scalability requirements for the backend services.
+Define performance metrics for the algorithm execution and data retrieval.
+3.2 Security
+Detail security measures for protecting user data, credentials, and communication channels.
+Define access control mechanisms and encryption standards.
+3.3 Integration
+Describe how the backend integrates with the frontend system and client servers.
+Specify protocols and standards for seamless communication and data exchange.
+4. System Interfaces
+4.1 External Interfaces
+Detail the interfaces for communication with the frontend system and client servers.
+Define input/output formats, endpoints, and data validation rules.
+5. Glossary
+Define key terminologies and acronyms used in the SRS document.

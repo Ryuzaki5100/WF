@@ -1,0 +1,211 @@
+Software Requirements Specification (SRS)
+Table of Contents
+Introduction
+
+1.1 Purpose
+1.2 Scope
+1.3 Definitions, Acronyms, and Abbreviations
+1.4 References
+1.5 Overview
+Overall Description
+
+2.1 Product Perspective
+2.2 Product Functions
+2.3 User Classes and Characteristics
+2.4 Operating Environment
+2.5 Design and Implementation Constraints
+2.6 Assumptions and Dependencies
+System Features
+
+3.1 Client Server Interaction
+3.2 WebSocket Communication
+3.3 Database Management
+3.4 Cache Management
+3.5 Algorithm (Bot) Execution
+External Interface Requirements
+
+4.1 User Interfaces
+4.2 Hardware Interfaces
+4.3 Software Interfaces
+4.4 Communication Interfaces
+System Features
+
+5.1 Feature 1
+5.1.1 Description and Priority
+5.1.2 Stimulus/Response Sequences
+5.1.3 Functional Requirements
+5.2 Feature 2
+5.2.1 Description and Priority
+5.2.2 Stimulus/Response Sequences
+5.2.3 Functional Requirements
+Other Nonfunctional Requirements
+
+6.1 Performance Requirements
+6.2 Safety Requirements
+6.3 Security Requirements
+6.4 Software Quality Attributes
+6.5 Business Rules
+Other Requirements
+
+7.1 Glossary
+7.2 Analysis Models
+7.3 Issues List
+1. Introduction
+1.1 Purpose
+The purpose of this document is to provide a detailed Software Requirements Specification (SRS) for the backend architecture of an automated trading system. This system will simulate exchange interactions by having client servers subscribe to exchange data, handle real-time data via web sockets, manage user credentials and transactions, and execute trading algorithms based on cached trade information.
+
+1.2 Scope
+This SRS covers the backend system designed to facilitate automated trading by simulating exchange data subscriptions, handling real-time data, managing user credentials and transaction records, leveraging a Redis cache for real-time trade information, and executing trading decisions via an algorithmic bot.
+
+1.3 Definitions, Acronyms, and Abbreviations
+API: Application Programming Interface
+Redis: Remote Dictionary Server
+WebSocket: A communication protocol for full-duplex communication channels over a single TCP connection
+SRS: Software Requirements Specification
+Bot: An automated trading algorithm
+DB: Database
+1.4 References
+Redis Documentation: https://redis.io/documentation
+WebSocket Protocol: https://tools.ietf.org/html/rfc6455
+1.5 Overview
+This document is structured to describe the overall architecture, system features, external interfaces, and non-functional requirements of the backend system. It will also cover detailed descriptions of each system feature and their respective requirements.
+
+2. Overall Description
+2.1 Product Perspective
+The product is an automated trading backend system. It simulates exchange data subscriptions via client servers, handles real-time data, manages user credentials and transaction records, and makes trading decisions based on cached trade information.
+
+2.2 Product Functions
+Subscribe to simulated exchange data via client servers
+Communicate in real-time via WebSockets
+Store and manage user credentials and transaction records
+Cache real-time trade information using Redis
+Execute trading algorithms based on cached data
+2.3 User Classes and Characteristics
+Traders: Use the system to perform automated trades
+Administrators: Manage the backend system, including user credentials and transaction records
+Developers: Maintain and update the system's codebase and infrastructure
+2.4 Operating Environment
+Server Environment: The backend will run on a cloud-based server environment (e.g., AWS, Azure)
+Database: A relational database (e.g., PostgreSQL) and Redis for caching
+Client Devices: Desktop and mobile devices with internet access
+2.5 Design and Implementation Constraints
+Real-time data processing constraints
+Security requirements for user data and transactions
+Scalability to handle a large number of simultaneous users and trades
+2.6 Assumptions and Dependencies
+The system assumes that the data for simulation is known beforehand
+Dependency on external data sources for trade information
+Redis and relational database services must be available and operational
+3. System Features
+3.1 Client Server Interaction
+3.1.1 Description and Priority
+Facilitate communication between the client servers and simulated exchange data to ensure real-time data flow. High priority for user experience.
+
+3.1.2 Stimulus/Response Sequences
+Client server subscribes to simulated exchange data
+Client server receives updated trade data
+3.1.3 Functional Requirements
+Implement data subscription mechanisms
+Ensure low-latency data transmission
+3.2 WebSocket Communication
+3.2.1 Description and Priority
+Maintain a persistent connection for real-time data updates. High priority for real-time trading.
+
+3.2.2 Stimulus/Response Sequences
+Establish a WebSocket connection between servers
+Transmit trade updates as they occur
+3.2.3 Functional Requirements
+Support WebSocket protocols
+Ensure secure and efficient data transmission
+3.3 Database Management
+3.3.1 Description and Priority
+Store and manage user credentials and transaction data. High priority for data integrity and security.
+
+3.3.2 Stimulus/Response Sequences
+Users register and log in
+Transactions are recorded and retrieved
+3.3.3 Functional Requirements
+Implement user authentication and authorization
+Ensure ACID properties for transaction management
+3.4 Cache Management
+3.4.1 Description and Priority
+Use Redis to cache the latest trade information for quick access. High priority for performance.
+
+3.4.2 Stimulus/Response Sequences
+New trade data is received and cached
+Cached data is retrieved by the trading algorithm
+3.4.3 Functional Requirements
+Integrate Redis for caching
+Ensure data consistency and availability
+3.5 Algorithm (Bot) Execution
+3.5.1 Description and Priority
+Execute trading decisions based on parameters from the Redis cache. High priority for core functionality.
+
+3.5.2 Stimulus/Response Sequences
+Trade data is updated in the cache
+Algorithm reads the data and makes trading decisions
+3.5.3 Functional Requirements
+Implement trading algorithms
+Ensure real-time decision making
+4. External Interface Requirements
+4.1 User Interfaces
+Web Interface: For traders to monitor and control their trading bots
+Admin Interface: For administrators to manage users and transactions
+4.2 Hardware Interfaces
+Servers: Cloud-based servers for hosting the backend system
+Client Devices: Computers or mobile devices used by traders and administrators
+4.3 Software Interfaces
+Database Systems: PostgreSQL for user and transaction data
+Caching System: Redis for real-time trade data
+WebSocket Protocol: For real-time communication
+4.4 Communication Interfaces
+HTTP/HTTPS: For secure data transmission
+WebSocket: For real-time updates
+5. System Features
+5.1 Client Server Interaction
+5.1.1 Description and Priority
+High priority for real-time data flow between servers and simulated exchanges.
+
+5.1.2 Stimulus/Response Sequences
+Client server subscribes to simulated data
+Receives and processes updates
+5.1.3 Functional Requirements
+Implement data subscription
+Maintain low-latency communication
+5.2 WebSocket Communication
+5.2.1 Description and Priority
+High priority for real-time updates and low-latency communication.
+
+5.2.2 Stimulus/Response Sequences
+Establish connection
+Transmit updates
+5.2.3 Functional Requirements
+Support WebSocket protocols
+Secure data transmission
+6. Other Nonfunctional Requirements
+6.1 Performance Requirements
+System must handle at least 10,000 concurrent users
+Real-time data updates with latency under 100ms
+6.2 Safety Requirements
+Ensure data encryption in transit and at rest
+Implement failover mechanisms for high availability
+6.3 Security Requirements
+User authentication and authorization
+Regular security audits and updates
+6.4 Software Quality Attributes
+Reliability: Ensure 99.9% uptime
+Scalability: Handle increasing load gracefully
+Maintainability: Modular codebase for easy updates
+6.5 Business Rules
+Transactions must comply with financial regulations
+User data must be protected and confidential
+7. Other Requirements
+7.1 Glossary
+Trade: The act of buying or selling financial instruments
+Arbitrage: The simultaneous purchase and sale of an asset to profit from a difference in the price
+7.2 Analysis Models
+ER Diagrams: For database structure
+Sequence Diagrams: For workflow visualization
+7.3 Issues List
+Integration challenges with Redis
+Ensuring real-time data consistency

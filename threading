@@ -1,0 +1,27 @@
+from flask import Flask, render_template
+from flask_socketio import SocketIO, emit
+import threading
+import time
+
+app = Flask(__name)
+socketio = SocketIO(app)
+
+# Function to run scripts periodically in a separate thread
+def run_scripts():
+    while True:
+        # Simulate running scripts
+        print("Running scripts...")
+        time.sleep(5)  # Run scripts every 5 seconds
+
+# WebSocket server thread
+def socket_server():
+    socketio.run(app, host='0.0.0.0', port=5000)
+
+if __name__ == '__main__':
+    # Start the WebSocket server thread
+    socket_thread = threading.Thread(target=socket_server)
+    socket_thread.start()
+
+    # Start the script execution thread
+    script_thread = threading.Thread(target=run_scripts)
+    script_thread.start()

@@ -1,0 +1,4 @@
+--JWTs were used for secure user authentication and authorization, ensuring that only verified users can access the system while providing a stateless, scalable solution. 
+--WebSockets facilitated real-time data transmission between the client and server, crucial for the timely execution of arbitrage opportunities in the volatile crypto market. 
+--Caching was implemented to store frequently accessed data temporarily, significantly reducing latency and improving the overall efficiency and responsiveness of the application. 
+--Together, these technologies ensured a secure, fast, and reliable trading environment.
